@@ -9,7 +9,15 @@ let consoleSpy = jest.spyOn(console, 'log');
 
 describe('test the pickupHandler independently', () => {
   it('pickupHandler works', () => {
-    
+    consoleSpy.mockClear();
+
+    let payload = {
+      name: 'Marta Mighty',
+      order: 'Some really rad stuff.'
+    }
+
+    expect(pickupHandler(payload)).toHaveBeenCalled();
+    expect(consoleSpy).toHaveBeenCalled();
   })
 
 

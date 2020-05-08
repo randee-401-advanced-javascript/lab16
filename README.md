@@ -1,6 +1,6 @@
 # lab16
 
-Author: Randee Orion
+Author: Randee Orion & Madison Stehle
 
 #### Links
 [GitHub Pull Request](https://github.com/randee-401-advanced-javascript/lab16/pull/1)
