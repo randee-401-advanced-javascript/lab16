@@ -15,10 +15,29 @@ describe('test the pickupHandler independently', () => {
       name: 'Marta Mighty',
       order: 'Some really rad stuff.'
     }
+    pickupHandler(payload)
 
-    expect(pickupHandler(payload)).toHaveBeenCalled();
-    expect(consoleSpy).toHaveBeenCalled();
-  })
+    expect(consoleSpy).toHaveBeenCalledWith({
+      name: 'Marta Mighty',
+      order: 'Some really rad stuff.'
+    });
 
+  });
 
-})
+});
+
+describe('test handler by emitting events', () => {
+
+    it('calls handler on shout', () => {
+      consoleSpy.mockClear();
+
+      let payload = {
+        name: 'Marta Mighty',
+        order: 'Some really rad stuff.'
+      };
+
+      globalEmitter.on('orderPlaced', pickupHandler);
+      globalEmitter.emit('orderPlaced', payload);
+      expect(consoleSpy).toHaveBeenCalledWith(payload);
+    });
+});
